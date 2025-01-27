@@ -3,8 +3,6 @@ const btnVoltar = document.getElementById("btn-voltar");
 const cartoes = document.querySelectorAll(".cartao");
 let cartaoAtual = 0;
 
-// let cartaoVirado = document.querySelector(".lista-personagens");
-
 btnAvancar.addEventListener("click", function() {
     if(cartaoAtual === cartoes.length -1) return;
 
@@ -32,14 +30,15 @@ function esconderCartaoSelecionado() {
     cartaoSelecionado.classList.remove("selecionado");
 };
 
-/* cartaoVirado.addEventListener("click", function() {
+cartoes.forEach(cartao => {
+    cartao.addEventListener("click", function() {
+        const cartaVirada = cartao.querySelector(".carta-virada");
 
-    const cartaoV = document.querySelector(".selecionado");
+        cartao.classList.toggle("virar");
+        
+        cartaVirada.classList.toggle("mostrar-fundo-carta");
 
-    if(cartaoV.classList.contains("virado")) {
-        cartaoV.classList.remove("virado");
-    } else {
-        cartaoV.classList.add("virado") ;
-    }
-
-}); */
+        const descricao = cartao.querySelector(".descricao");
+        descricao.classList.toggle("esconder");
+    });
+})
